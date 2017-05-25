@@ -1,20 +1,22 @@
 #pragma once
-#include <string>
 #include <fstream>
-#include <sstream>
+#include <string>
 #include <iostream>
-
+#include <sstream>
 using namespace std;
 
-typedef class user {
-	string	name;
+class user {
+	string name;
+	int score;
+	int nMoves;
 public:
-	int		score;
 	user();
 	string getName();
-	void setName(string);
 	int getScore();
-	void setScore(int);
+	int getMoves();
+	void setName(string name);
+	void setScore(int score);
+	void setMoves(int nMoves);
+	void importName(char *fName);
+	void exportScore(char *fName, int score);
 };
-
-bool loadUser(char*, user&);
