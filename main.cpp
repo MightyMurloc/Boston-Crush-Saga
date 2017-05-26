@@ -89,7 +89,11 @@ int main() {
 					pos = Mouse::getPosition(game) - offset;
 				}
 			if (event.type == Event::KeyPressed)
-				if (event.key.code == Keyboard::Q) return 0;
+				if (event.key.code == Keyboard::Q) {
+					user.setScore(nScore * 100);
+					user.exportScore("score.dat", nScore * 100);
+					return 0;
+				}
 		}
 		// Handles mouse click
 		if (click == 1) {
@@ -136,7 +140,10 @@ int main() {
 				score += board[i][j].match;
 		// Swap back if no match found
 		if (isSwap && !isMoving) {
-			if (!score) swap(board[y1][x1], board[y2][x2]);
+			if (!score) {
+				swap(board[y1][x1], board[y2][x2]);
+				nMoves++;
+			}
 			isSwap = false;
 		}
 		// Update grid
